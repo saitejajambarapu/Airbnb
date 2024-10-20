@@ -31,7 +31,7 @@ app.engine("ejs", ejsMate);
 
 // const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
-const MONGO_URL = process.env.ATLAS_MONGO_DB;
+ const MONGO_URL = process.env.ATLAS_MONGO_DB;
 
 main().then(() => {
     console.log("connected to db");
@@ -45,6 +45,7 @@ async function main() {
 app.get("/", (req, res) => {
     res.redirect("/listings");
 })
+
 // mongo  sesseion
 
 const store = MongoStore.create({
