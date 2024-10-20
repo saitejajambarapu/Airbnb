@@ -71,11 +71,6 @@
         <div class="card-body">
           <h5 class="card-title"><i><%=review.author.username%></i></h5>
           <p class="starability-result" data-rating=<%=review.rating%> ></p>
-          <p class="card-text"><%=review.comment%> </p>
-          <h3>Rated element name</h3>
-          
-            Rated: 3 stars
-          </p>
           <!--  (listing.owner.review._id) -->
           <%if(isloggedin && isloggedin._id.equals(review.author._id)){ %>
           <form
