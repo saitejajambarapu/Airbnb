@@ -42,10 +42,9 @@ async function main() {
     await mongooose.connect(MONGO_URL);
 }
 
-// app.get("/", (req, res) => {
-//     res.send("i am in root");
-// })
-
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+})
 // mongo  sesseion
 
 const store = MongoStore.create({
