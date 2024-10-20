@@ -1,0 +1,78 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+    <style>
+        #bar{
+            display: flex;
+            align-items: center;
+        }
+    </style>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <br>
+            <h3>Create New Listing</h3>
+            <form method="POST" enctype="multipart/form-data" action="/listings" novalidate class="needs-validation">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input name="listing[title]" placeholder="enter title" type="text" class="form-control" required />
+                    <div class="valid-feedback">Title Looks Good</div>
+                    <div class="invalid-feedback">Give a Title</div>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="listing[description]" placeholder="enter description" type="textarea"
+                        class="form-control" required></textarea>
+                    <div class="invalid-feedback">Enter a valid Description</div>
+                </div>
+                <div class="row" id="bar">
+                    <div class="mb-3 col-md-8">
+                        <label for="image" class="form-label">Image</label>
+                        <input name="listing[image]" placeholder="enter image" type="file" class="form-control">
+
+
+                    </div>
+
+                    <div class="mb-3 col-md-4">
+                        <label class="mb-2" for="filter-select">Choose The Category:</label>
+                        <br>
+                        <select id="filter-select" name="listing[category]" required class="form-control">
+                            <option value="" disabled selected>Select the Category</option>
+                            <option  value="rooms">Rooms</option>
+                            <option  value="iconic-cities">Iconic Cities</option>
+                            <option  value="mountains">Mountains</option>
+                            <option  value="castles">Castles</option>
+                            <option value="amazing-pools">Amazing Pools</option>
+                            <option  value="campings">Campings</option>
+                            <option  value="farms">Farms</option>
+                            <option  value="arctic">Arctic</option>
+                            <option  value="domes">Domes</option>
+                            <option  value="boats">Boats</option>
+                        </select>
+                        <div class="invalid-feedback">Enter a valid Price</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="price" class="form-label">Price</label>
+                        <input name="listing[price]" placeholder="enter price" type="number" class="form-control"
+                            required>
+                        <div class="invalid-feedback">Enter a valid Price</div>
+                    </div>
+                    <div class="mb-3 col-md-8">
+                        <label for="country" class="form-label">Country</label>
+                        <input name="listing[country]" placeholder="enter country" type="text" class="form-control"
+                            required>
+                        <div class="invalid-feedback">Enter a valid Country Name</div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input name="listing[location]" placeholder="enter location" type="text" class="form-control"
+                        required>
+                    <div class="invalid-feedback">Enter a valid Location</div>
+                </div>
+                <button class="btn btn-dark add-btn">Add Listing</button>
+
+            </form>
+            <br>
+        </div>
+    </div>

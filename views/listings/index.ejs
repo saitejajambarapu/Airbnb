@@ -1,0 +1,113 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+  <body>
+    <!-- <h1>Listings</h1> -->
+    <div class="maindiv container-fluid">
+     <div id="filters" class="scrollable-filters">
+      <a id="scroll" href="/listings/filter/trending">
+      <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </div>
+      </a>
+      <a id="scroll" href="/listings/filter/rooms">
+      <div class="filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+      </div>
+    </a>
+    <a id="scroll" href="/listings/filter/iconic-cities">
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic Cities</p>
+      </div>
+    </a>
+    <a id="scroll" href="/listings/filter/mountains">
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+      </div>
+    </a>
+    <a id="scroll" href="/listings/filter/castles">
+      <div class="filter">
+        <div><i class="fa-brands fa-fort-awesome"></i></div>
+        <p>Castles</p>
+      </div>
+    </a>
+      <a id="scroll" href="/listings/filter/amazing-pools">
+      <div class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Amazing Pools</p>
+      </div>
+    </a>
+      <a id="scroll" href="/listings/filter/campings">
+      <div class="filter">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Campings</p>
+      </div>
+    </a>
+      <a id="scroll" href="/listings/filter/farms">
+      <div class="filter">
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p>Farms</p>
+      </div>
+    </a>
+      <a id="scroll" href="/listings/filter/arctic">
+      <div class="filter">
+        <div><i class="fa-regular fa-snowflake"></i></div>
+        <p>Arctic</p>
+      </div>
+    </a>
+      <a id="scroll" href="/listings/filter/domes">
+      <div class="filter">
+        <div><i class="fa-solid fa-igloo"></i></div>
+        <p>Domes</p>
+      </div>
+    </a>
+      <a id="scroll" href="/listings/filter/boats">
+      <div class="filter">
+        <div><i class="fa-solid fa-ship"></i></div>
+        <p>Boats</p>
+      </div>
+    </a>
+    <div  class="toogleswitch">
+      <div class="form-check-reverse form-switch">
+        <input class="form-check-input" type="checkbox" id="taxswitch" id="flexSwitchCheckDefault ">
+        <label class="form-check-label" id="taxswitch" for="flexSwitchCheckDefault">Display Price After Tax</label>
+      </div>
+    </div>
+      
+     </div>
+     
+    </div>
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+      <% listings.forEach(listing=> { %>
+
+        <div class="card col listing-card">
+          <a href="/listings/<%=listing._id%>" class="listing-link">
+            <img src="<%=listing.image.url%>" class="card-img-top" style="height: 20rem;" alt="...">
+            <div class="card-img-overlay">
+            </div>
+            <div class="card-body">
+              <p class="card-text originalprice">
+                <b>
+                  <%=listing.title%>
+                </b><br>
+                &#8377;<%=listing.price.toLocaleString("en-IN")%>/Night<br>
+              </p>
+              <p class="card-text taxprice">
+                <b>
+                  <% let taxprice=listing.price+(listing.price*0.18); %>
+                  <%=listing.title%>
+                </b><br>
+                &#8377;<%=taxprice.toLocaleString("en-IN")%>/Night (with +18% GST)
+              </p>
+          </a>
+        </div>
+
+    </div>
+    <% }); %>
+      </div>
+  </body>
+
+  

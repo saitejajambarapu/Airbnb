@@ -1,0 +1,73 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+
+    <body>
+        <h3>Add New List</h3>
+        <form method="POST" enctype="multipart/form-data" action="/listings/<%=listing._id%>?_method=PUT" novalidate
+            class="needs-validation">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input name="listing[title]" value="<%=listing.title%>" type="text" class="form-control" required />
+                <div class="valid-feedback">Title Looks Good</div>
+                <div class="invalid-feedback">Give a Title</div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="listing[description]" type="textarea" class="form-control"
+                    required><%=listing.description%></textarea>
+                <div class="invalid-feedback">Enter a valid Description</div>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Original Image</label>
+                <img src="<%=listing.image.url%>" style="width:250px; height: 250px" />
+
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-8">
+                    <label for="image" class="form-label">Image</label>
+                    <input name="listing[image]" value="<%=listing.image%>" type="file" class="form-control">
+
+                </div>
+                <div class="mb-3 col-md-4">
+                    <label for="filter-select">Choose a category:</label>
+                    <select id="filter-select" name="listing[category]" required class="form-control">
+                        <option value="" disabled>Select the Category</option>
+                        <option value="rooms" <%=listing.category==='rooms' ? 'selected' : '' %>>Rooms</option>
+                        <option value="iconic-cities" <%=listing.category==='iconic-cities' ? 'selected' : '' %>>Iconic
+                            Cities</option>
+                        <option value="mountains" <%=listing.category==='mountains' ? 'selected' : '' %>>Mountains
+                        </option>
+                        <option value="castles" <%=listing.category==='castles' ? 'selected' : '' %>>Castles</option>
+                        <option value="amazing-pools" <%=listing.category==='amazing-pools' ? 'selected' : '' %>>Amazing
+                            Pools</option>
+                        <option value="campings" <%=listing.category==='campings' ? 'selected' : '' %>>Campings</option>
+                        <option value="farms" <%=listing.category==='farms' ? 'selected' : '' %>>Farms</option>
+                        <option value="arctic" <%=listing.category==='arctic' ? 'selected' : '' %>>Arctic</option>
+                        <option value="domes" <%=listing.category==='domes' ? 'selected' : '' %>>Domes</option>
+                        <option value="boats" <%=listing.category==='boats' ? 'selected' : '' %>>Boats</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a valid category.</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-4">
+                    <label for="price" class="form-label">Price</label>
+                    <input name="listing[price]" value="<%=listing.price%>" type="number" class="form-control" required>
+                    <div class="invalid-feedback">Enter a valid Price</div>
+                </div>
+                <div class="mb-3 col-md-8">
+                    <label for="country" class="form-label">Country</label>
+                    <input name="listing[country]" value="<%=listing.country%>" type="text" class="form-control"
+                        required>
+                    <div class="invalid-feedback">Enter a valid Country Name</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input name="listing[location]" value="<%=listing.location%>" type="text" class="form-control" required>
+                <div class="invalid-feedback">Enter a valid Location</div>
+            </div>
+            <button class="btn btn-dark add-btn">Add Listing</button>
+        </form>
+
+    </body>
