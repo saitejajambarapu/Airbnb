@@ -80,34 +80,27 @@
      
     </div>
 
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-      <% listings.forEach(listing=> { %>
-
-        <div class="card col listing-card">
-          <a href="/listings/<%=listing._id%>" class="listing-link">
-            <img src="<%=listing.image.url%>" class="card-img-top" style="height: 20rem;" alt="...">
-            <div class="card-img-overlay">
-            </div>
-            <div class="card-body">
-              <p class="card-text originalprice">
-                <b>
-                  <%=listing.title%>
-                </b><br>
-                &#8377;<%=listing.price.toLocaleString("en-IN")%>/Night<br>
-              </p>
-              <p class="card-text taxprice">
-                <b>
-                  <% let taxprice=listing.price+(listing.price*0.18); %>
-                  <%=listing.title%>
-                </b><br>
-                &#8377;<%=taxprice.toLocaleString("en-IN")%>/Night (with +18% GST)
-              </p>
-          </a>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+      <% listings.forEach(listing => { %>
+        <div class="col">
+          <div class="card listing-card">
+            <a href="/listings/<%= listing._id %>" class="listing-link">
+              <img src="<%= listing.image.url %>" class="card-img-top" style="height: 20rem;" alt="...">
+              <div class="card-body">
+                <p class="card-text originalprice">
+                  <b><%= listing.title %></b><br>
+                  &#8377;<%= listing.price.toLocaleString("en-IN") %>/Night<br>
+                </p>
+                <p class="card-text taxprice" style="display: none;">
+                  <b><%= listing.title %></b><br>
+                  <% let taxprice = listing.price + (listing.price * 0.18); %>
+                  &#8377;<%= taxprice.toLocaleString("en-IN") %>/Night (with +18% GST)
+                </p>
+              </div>
+            </a>
+          </div>
         </div>
-
+      <% }); %>
     </div>
-    <% }); %>
-      </div>
-  </body>
-
-  
+  </div>
+</body>
