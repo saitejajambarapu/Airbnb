@@ -26,17 +26,16 @@
       <div class="map-container mb-3">
         <div id="map" class="w-100" style="height: 300px;"></div>
       </div>
+       <% if (isloggedin && isloggedin._id.equals(listing.owner._id)) { %>
+        <div class="btns">
+          <a href="/listings/<%= listing._id %>/edit"><button class="btn btn-danger ms-4">Edit</button></a>
+          <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST" class="d-inline ms-5">
+            <button class="btn btn-dark">Delete</button>
+          </form>
+        </div>
+      <% } %>
     </div>
   </div>
-  
-  <% if (isloggedin && isloggedin._id.equals(listing.owner._id)) { %>
-    <div class="btns text-center my-3">
-      <a href="/listings/<%= listing._id %>/edit" class="btn btn-danger">Edit</a>
-      <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST" class="d-inline">
-        <button class="btn btn-dark">Delete</button>
-      </form>
-    </div>
-  <% } %>
 
   <div class="col-6 mb-3 custom-margin">
     <% if (isloggedin && !isloggedin._id.equals(listing.owner._id)) { %>
