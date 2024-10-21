@@ -3,6 +3,12 @@
   const mapToken = "<%= process.env.MAP_TOKEN %>";
   const listing = <%- JSON.stringify(listing) %>;
 </script>
+<style>
+  .custom-margin {
+  margin-left: 50%;
+  transform: translateX(-50%); /* Center it based on the left margin */
+}
+</style>
 
 <div class="row mt-3 mb-5">
   <div class="col-12">
@@ -32,7 +38,7 @@
     </div>
   <% } %>
 
-  <div class="col-12 mb-3">
+  <div class="col-6 mb-3 custom-margin">
     <% if (isloggedin && !isloggedin._id.equals(listing.owner._id)) { %>
       <h4>Leave a Review</h4>
       <form action="/listings/<%= listing.id %>/reviews" method="post" novalidate class="needs-validation">
@@ -59,11 +65,11 @@
         <button class="btn btn-outline-dark">Submit</button>
       </form>
     <% } %>
-
+  </div>
     <br>
-    <div class="row">
+    <div class="row ">
       <% if (listing.reviews.length) { %>
-        <h4>All Reviews</h4>
+        <h4 class="text-center">All Reviews</h4>
       <% } %>
 
       <% for (review of listing.reviews) { %>
@@ -81,7 +87,7 @@
         </div>
       <% } %>
     </div>
-  </div>
+  
 </div>
 
 <script src="/js/map.js"></script>
